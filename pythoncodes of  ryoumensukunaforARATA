@@ -1,0 +1,47 @@
+#Sugi 1 for Yasue sensei sample images
+
+from PIL import Image
+import os
+
+# input path
+input_image_path = r"X:\XX\XXX\XXXX.jpg"
+## rewrite the image name you wish to input in A4 size
+
+# output path
+output_folder = r"Y:\YY\YYY\YYYY"
+## rewrite the output folder name you with for the cut 400X400 pixel images
+
+# crop size definition
+crop_size = (400, 400)
+
+def crop_image(image_path, output_folder, crop_size):
+    
+    img = Image.open(image_path)
+    
+    width, height = img.size
+    
+    rows = height // crop_size[1]
+    cols = width // crop_size[0]
+    
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    
+    count = 0
+    for r in range(rows):
+        for c in range(cols):
+            # Calculate the coordinates of the upper left corner and lower right corner of the cutting area
+            left = c * crop_size[0]
+            top = r * crop_size[1]
+            right = left + crop_size[0]
+            bottom = top + crop_size[1]
+            
+            # cutting
+            cropped_img = img.crop((left, top, right, bottom))
+            
+            # save
+            output_path = os.path.join(output_folder, f"file's name-{left}_{top}_{right}_{bottom}_{count}.jpg")
+            cropped_img.save(output_path)
+            
+            count += 1
+
+crop_image(input_image_path, output_folder, crop_size)
