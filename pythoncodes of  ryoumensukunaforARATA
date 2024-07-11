@@ -1,4 +1,4 @@
-#Sugi 1 for Yasue sensei sample images
+#Sugi for A4 sample images
 
 from PIL import Image
 import os
