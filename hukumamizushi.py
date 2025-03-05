@@ -1,4 +1,4 @@
-#hukumamizushi
+#hukumamizushi (伏魔御廚子)
 #ryoumensukunaforARATA folder version
 #ryukoku hinoki segmented image data
 
